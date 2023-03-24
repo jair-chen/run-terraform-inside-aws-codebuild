@@ -35,13 +35,13 @@ Resources:
               - sts:AssumeRole
       Path: /
       Policies:
-        - PolicyName: adminaccess
-          PolicyDocument:
+        - PolicyDocument:
             Version: 2012-10-17
             Statement:
               - Action: "*"
                 Effect: Allow
                 Resource: "*"
+          PolicyName: adminaccess
   BuildProject:
     Type: AWS::CodeBuild::Project
     Properties:
