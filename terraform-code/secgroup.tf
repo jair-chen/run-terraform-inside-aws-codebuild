@@ -1,6 +1,6 @@
 resource "aws_security_group" "crypto" {
   name = "${var.prefix}"
-  tags {
+  tags = {
         Name = "${var.prefix}"
   }
   description = "${var.prefix} SG"
