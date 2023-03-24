@@ -9,10 +9,10 @@ phases:
   install:
     commands:
       - sudo pip install boto3
-      - wget https://releases.hashicorp.com/terraform/0.10.4/terraform_0.10.4_linux_amd64.zip
-      - unzip terraform_0.10.4_linux_amd64.zip
-      - sudo mv terraform /bin
-      - rm terraform_0.10.4_linux_amd64.zip
+      - wget -nv https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip
+      - unzip terraform_1.1.0_linux_amd64.zip
+      - sudo mv terraform /usr/local/bin/
+      - rm terraform_1.1.0_linux_amd64.zip
       - apt-get update
       - apt-cache search source
       - apt-get install -y curl jq
@@ -28,10 +28,10 @@ phases:
       - echo "  }" >> provider-output-backend.tf
       - echo "}" >> provider-output-backend.tf
       - cat provider-output-backend.tf
-      - source /tmp/aws_cred_export.txt && terraform init
+      - . /tmp/aws_cred_export.txt && terraform init
   build:
     commands:
-      - source /tmp/aws_cred_export.txt &&  python runterraform.js.py $region $applicationname $destroy
+      - . /tmp/aws_cred_export.txt &&  python runterraform.js.py $region $applicationname $destroy
       - echo "Post apply build"
   post_build:
     commands:
