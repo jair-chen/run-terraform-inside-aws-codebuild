@@ -50,7 +50,7 @@ Resources:
           - _
           - - Ref: AWS::StackName
             - Ref: AWS::Region
-            - build_Application
+            - TF_Apply
       Description: build the application part for cades using terraform
       ServiceRole:
         Ref: Adminrole
